@@ -18,6 +18,12 @@ from agents.publisher import PublisherAgent
 PORT = int(os.environ.get("PORT", 8999))
 STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
 
+# DB 초기화 먼저 실행 (디렉터리 및 테이블 생성 보장)
+try:
+    init_db()
+except Exception:
+    pass
+
 # 오케스트레이터 싱글톤
 orchestrator = AffiliateStudioOrchestrator()
 publisher = PublisherAgent()

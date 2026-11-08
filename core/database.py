@@ -4,6 +4,10 @@ import os
 from datetime import datetime
 
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "affiliate.db")
+try:
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+except Exception:
+    pass
 
 def init_db():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
@@ -255,3 +259,9 @@ def get_learned_blog_profile():
 def save_learned_blog_profile(profile_dict: dict):
     """블로그 학습 프로필 저장 (다음 글부터 100% 자동 반영)"""
     set_setting("learned_blog_profile", json.dumps(profile_dict, ensure_ascii=False))
+
+# 모듈 로드 시 안전한 DB 및 테이블 자동 생성
+try:
+    init_db()
+except Exception:
+    pass
