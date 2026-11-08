@@ -1,0 +1,2 @@
+# AutoAffiliate Studio는 순수 파이썬 표준 라이브러리(http.server, sqlite3, urllib) 기반으로 작동합니다.
+# 추가 무거운 외부 패키지 설치 없이 30초 만에 무료 배포됩니다.
